@@ -29,8 +29,12 @@ class Account extends Component {
   }
 
   render() {
+    let cn = 'account'
+    if (this.state.balance === 0) {
+      cn += ' zero'
+    }
     return (
-      <div className="account">
+      <div className={cn}>
         <h2>{this.state.name}</h2>
         <div className="balance">{this.state.balance}</div>
         <input type="text" placeholder="enter an amount" value={this.input} onChange={this.handleChange}/>
