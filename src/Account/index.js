@@ -6,7 +6,8 @@ class Account extends Component {
     super();
 
     this.state = {
-      name: props.name
+      name: props.name,
+      balance: 0
     }
   }
 
