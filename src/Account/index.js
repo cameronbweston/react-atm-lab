@@ -7,7 +7,18 @@ class Account extends Component {
 
     this.state = {
       name: props.name,
-      balance: 0
+      balance: 0,
+      value: ''
+    }
+  }
+
+  increaseBalance = () => {
+    this.setState({ balance: this.state.balance + this.state.value})
+  }
+
+  decreaseBalance = () => {
+    if (!this.state.value > this.state.balance) {
+      this.setState({ balance: this.state.balance - this.state.value})
     }
   }
 
@@ -16,9 +27,9 @@ class Account extends Component {
       <div className="account">
         <h2>{this.state.name}</h2>
         <div className="balance">$0</div>
-        <input type="text" placeholder="enter an amount" />
-        <input type="button" value="Deposit" />
-        <input type="button" value="Withdraw" />
+        <input type="text" placeholder="enter an amount" ref={this.state.value}/>
+        <input type="button" value="Deposit" onClick={this.increaseBalance}/>
+        <input type="button" value="Withdraw" onClick={this.decreaseBalance}/>
       </div>
     )
   }
